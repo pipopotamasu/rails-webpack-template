@@ -28,7 +28,7 @@ const entry = targets.reduce((entry, target) => {
 }, {});
 
 const TARGET_BROWSERS = [
-  "last 1 IE versions",
+  "ie >= 11",
   "last 2 Edge versions",
   "last 2 Chrome versions",
   "last 2 Firefox versions",
@@ -61,7 +61,7 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: "vue-loader"
       },
       {
         test: /\.js$/,
@@ -95,7 +95,6 @@ module.exports = {
           {
             loader: "css-loader",
             options: {
-              minimize: true,
               // css-loaderの前に噛ませるloaderの数
               importLoaders: 2
             }
@@ -122,9 +121,8 @@ module.exports = {
         test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
         use: [
           {
-            loader: "url-loader",
+            loader: "file-loader",
             options: {
-              limit: 100 * 1024,
               name: "img/[name]-[hash].[ext]"
             }
           }
